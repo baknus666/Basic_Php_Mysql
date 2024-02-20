@@ -13,7 +13,7 @@ if ($_SESSION['status']=="login") {
             if ($_SESSION['role']=="admin") {
                 header("location:index.php");
             }else{
-                header("location:index2.php");
+                header("location:member.php");
             }
         } else {
             header("location:login.php?msg=gagal");

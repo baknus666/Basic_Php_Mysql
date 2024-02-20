@@ -31,6 +31,18 @@
 
     }
 
+    function show_catatan_user($id_user)
+    {
+        global $koneksi;
+        $hasil=mysqli_query($koneksi,"SELECT * FROM notes WHERE id_user='$id_user';");
+        $rows=[];
+        while($row = mysqli_fetch_assoc($hasil))
+        {
+            $rows[] = $row;
+        }
+        return $rows;
+    }
+
     function inputdata($inputdata)
     {
         global $koneksi;
