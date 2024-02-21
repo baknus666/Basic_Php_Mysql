@@ -5,10 +5,10 @@
     define ('DB_NAME', 'pplg_1_notes');
     $koneksi=mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME) or die("Gagal terhubung dengan Database: " . mysqli_error($dbconnect));
     
-    function tampildata($tablename)
+    function tampildata()
     {
         global $koneksi;
-        $hasil=mysqli_query($koneksi,"select * from $tablename");
+        $hasil=mysqli_query($koneksi,"SELECT notes.id, notes.note, notes.created_at, notes.id_user, user.username from notes INNER JOIN user on notes.id_user=user.id_user;");
         $rows=[];
         while($row = mysqli_fetch_assoc($hasil))
         {

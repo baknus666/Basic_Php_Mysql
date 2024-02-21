@@ -1,22 +1,22 @@
 <?php
 require_once('database.php');
-session_start();
+session_start(); // memulai session
 $_SESSION['status'] = ""; 
-if ($_SESSION['status']=="login") {
+if ($_SESSION['status']=="login") { // cek session jika sudah login lanjutkan ke index.php 
     header("location:index.php");
-}else{
-    if (isset($_POST['masuk'])) {
+}else{ // jika status belum login tampilkan ke form login 
+    if (isset($_POST['masuk'])) {  // jika tombol submit ditekan 
         $username = $_POST['username'];
         if (cek_login($_POST['username'], $_POST['password'])) {
-            $_SESSION['username'] = $username;
-            $_SESSION['status'] = "login";
-            if ($_SESSION['role']=="admin") {
-                header("location:index.php");
+            $_SESSION['username'] = $username; // masukan session username
+            $_SESSION['status'] = "login"; // masukan session status login
+            if ($_SESSION['role']=="admin") {  // jika role admin
+                header("location:index.php"); // arahkan ke halaman index
             }else{
-                header("location:member.php");
+                header("location:member.php"); // arahkan ke halaman member
             }
         } else {
-            header("location:login.php?msg=gagal");
+            header("location:login.php?msg=gagal"); // jika gagal login arahkan ke halaman login
         }
     }
 }
@@ -48,7 +48,7 @@ if ($_SESSION['status']=="login") {
                                     <input type="text" name="username" class="form-control" placeholder="Username">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" name="password" class="form-control" placeholder="Password">
+                                    <input type="password" name="password" class="form-control" placeholder="Password">
                                 </div>
                                 <div class="form-group custom-control custom-checkbox">
                                     <input type="checkbox" class="custom-control-input" id="customControlAutosizing">

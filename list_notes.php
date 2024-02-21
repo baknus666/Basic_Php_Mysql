@@ -1,7 +1,6 @@
 <?php
     require_once('database.php');
-    // $data=tampildata("notes");
-    $data=show_catatan();
+    $data=tampildata();
     $nomor=0;
 ?>
 <!doctype html>
